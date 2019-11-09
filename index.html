@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- Head contains the Title, and CSS Bootstrap link along with Personal CSS link -->
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Coding Quiz Game</title> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/style.css" type="text/css"/>
+    </head>
+    <body>
+        <div class="nav-bar-container">
+            <div id="leaderboard-box">
+                <button id="leaderbtn" type="button" class="btn btn-light"">Leaderboard</button>
+            </div>
+            <div id="timer-box">
+                <div id="timer">Time Remaining: 0</div>
+            </div>
+
+        </div>
+        <div class="quiz-container flex-column d-flex">
+            <div id="start-quiz-container">
+                <h1>Coding Quiz Game</h1>
+                <hr>
+                <p>Answer the following FIVE developer questions within the time limit given. Make sure to answer correctly or be penalized 10 seconds for incorrect answers. Keep in mind speed also contributes to score, so the more time remaining at the end the higher the score. The time can be seen from the top right corner of your screen.</p>
+                <h3>Good Luck!</h3>
+                <br>
+                <button id="startbtn" type="button" class="btn btn-primary btn-lg">Start Quiz</button>
+            </div>
+            <div id="container running-quiz-container" style="display : none;">
+                <div id="question"></div>
+                <br>
+                <div id="row choices">
+                    <div class="col-lg-12">
+                        <button id="choiceA" type="button" class="btn outline-secondary"></button>
+                    </div>
+                    <div class="col-lg-12">
+                        <button id="choiceB" type="button" class="btn outline-secondary"></button>
+                    </div>
+                    <div class="col-lg-12">
+                        <button id="choiceC" type="button" class="btn outline-secondary"></button>
+                    </div>
+                    <div class="col-lg-12">
+                        <button id="choiceD" type="button" class="btn outline-secondary"></button>
+                    </div>
+                </div>
+                <hr>
+                <div id="popup-answer-key"></div>
+            </div>
+            <div id="result-quiz-container" style="display : none;">
+                <h2>Quiz Results</h2>
+                <p>Congratulations! Your score was...</p>
+                <p id="score"></p>
+                <p>Please try again to obtain a higher score!</p>
+                <br>
+                <hr>
+                <br>
+                <p>In the text box below place your initials then submit.</p>
+                <p>*Check the leaderboards to see where you place*</p>
+                <input id="initials">
+                <button id="intialbtn" type="button" class="btn btn-primary btn-sm">Submit</button>
+            </div>
+        </div>
+
+
+        <script src="assets/JS/main.js"></script>
+        <script src="assets/JS/questions.js"></script>
+    </body>
+</html>
