@@ -12,10 +12,13 @@ body{
 /* Navbar css properties listed below  */
 .nav-bar-container{
     width: 100%;
+    position: relative;
     height: 60px;
     background-color:#99ff99;
 }
 #leaderboard-box{
+    position: relative;
+    height: wrap;
     float: left;
     margin-left: 5%;
     padding: 7px 0;
@@ -52,10 +55,10 @@ body{
     color: white;
     font-size: 30px;   
 }
-#choiceA, #choiceB, #choiceC, #choiceD{
+#A, #B, #C, #D{
+    border: 2px solid #99ff99;
     width: auto;
     text-align: left;
-    background-color:#99ff99;
     margin: 3px 0;
 }
 #result-quiz-container{
@@ -68,5 +71,13 @@ body{
     background-color:#001a00;
     color: white;
 }
-
-
+#score{
+    font-size: 20px;
+    font-weight: bolder;
+}
+.dropdown-menu{
+    background-color: white;
+}
+#dropdown-item{
+    color: white;
+}

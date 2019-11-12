@@ -6,18 +6,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Coding Quiz Game</title> 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="assets/style.css" type="text/css"/>
     </head>
     <body>
+        <!-- This is the container that holds both the Leaderbord and Time -->
         <div class="nav-bar-container">
-            <div id="leaderboard-box">
-                <button id="leaderbtn" type="button" class="btn btn-light"">Leaderboard</button>
+            <!-- This is the Leaderboard div container that appends new players when submited at the end -->
+            <div class="dropdown" id="leaderboard-box">
+                <button id="leaderbtn" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Leaderboard List  </button>
+                    <ul id="leaderboardList" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                    </ul>
             </div>
+            <!-- div container that illustrates the time remaining on test -->
             <div id="timer-box">
                 <div id="timer">Time Remaining: 0</div>
             </div>
 
         </div>
+        <!-- this is the quiz section div container -->
         <div class="quiz-container flex-column d-flex">
             <div id="start-quiz-container">
                 <h1>Coding Quiz Game</h1>
@@ -27,26 +37,34 @@
                 <br>
                 <button id="startbtn" type="button" class="btn btn-primary btn-lg">Start Quiz</button>
             </div>
-            <div id="container running-quiz-container" style="display : none;">
-                <div id="question"></div>
-                <br>
-                <div id="row choices">
+            <!-- Cycles the questions that is prompted after clicking the Start Button -->
+            <div id="running-quiz-container" style="display : none;">
+                <div id="container">
+                    <!-- question div container -->
+                    <div id="question"></div>
+                    <br>
+                    <div id="row choices">
+                        <!-- div that displays the user choices -->
+                        <div class="col-lg-12">
+                            <button id="A" type="button" class="btn outline-secondary" onclick="checkAnswer('A')"></button>
+                     </div>
                     <div class="col-lg-12">
-                        <button id="choiceA" type="button" class="btn outline-secondary"></button>
+                            <button id="B" type="button" class="btn outline-secondary" onclick="checkAnswer('B')"></button>
+                        </div>
+                        <div class="col-lg-12">
+                            <button id="C" type="button" class="btn outline-secondary" onclick="checkAnswer('C')"></button>
+                        </div>
+                        <div class="col-lg-12">
+                            <button id="D" type="button" class="btn outline-secondary" onclick="checkAnswer('D')"></button>
+                        </div>
                     </div>
-                    <div class="col-lg-12">
-                        <button id="choiceB" type="button" class="btn outline-secondary"></button>
-                    </div>
-                    <div class="col-lg-12">
-                        <button id="choiceC" type="button" class="btn outline-secondary"></button>
-                    </div>
-                    <div class="col-lg-12">
-                        <button id="choiceD" type="button" class="btn outline-secondary"></button>
-                    </div>
+                
+                    <hr>
+                    <!-- displayes answer after clicking choice for a second before cycling to the next question -->
+                    <div id="popup-answer-key"></div>
                 </div>
-                <hr>
-                <div id="popup-answer-key"></div>
             </div>
+            <!-- This div generates after user runs out of time or last question is answered -->
             <div id="result-quiz-container" style="display : none;">
                 <h2>Quiz Results</h2>
                 <p>Congratulations! Your score was...</p>
@@ -57,13 +75,12 @@
                 <br>
                 <p>In the text box below place your initials then submit.</p>
                 <p>*Check the leaderboards to see where you place*</p>
-                <input id="initials">
+                <input id="initials" placeholder="ABC">
                 <button id="intialbtn" type="button" class="btn btn-primary btn-sm">Submit</button>
             </div>
         </div>
-
-
-        <script src="assets/JS/main.js"></script>
         <script src="assets/JS/questions.js"></script>
+        <script src="assets/JS/main.js"></script>
+        
     </body>
 </html>
