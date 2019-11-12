@@ -1,7 +1,7 @@
 # Devloper-Quiz
 This is a game quiz that scores your ability to answer question correctly as well as in a timely manner for maximum points.
 
-![image](https://raw.githubusercontent.com/jcraig451/Devloper-Quiz/master/assets/images/quiz-page.jpg)
+![image](https://raw.githubusercontent.com/jcraig451/Devloper-Quiz/assets/images/quiz-page.jpg)
 <hr>
 
 Functions that this program details are as followed:
