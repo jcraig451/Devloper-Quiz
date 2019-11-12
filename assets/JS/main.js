@@ -16,6 +16,7 @@ var initialBtn = document.getElementById("intialbtn");
 var leaderBtn = document.getElementById("leaderbtn");
 var leaderList = document.getElementById("leaderboardList");
 var nameEl = document.getElementById("initials");
+var refreshBtn = document.getElementById("refreshBtn");
 
 // initializing variables for the start
 var lastQuestion = questions.length - 1;
@@ -23,6 +24,7 @@ var runningQuestion = 0;
 var timeCount = 75;
 var penalty = 10;
 var score = 0
+var percentScore;
 
 // function that cycles the questions, answers & choices
 function cycleQuestion(){
@@ -90,7 +92,7 @@ function resultsPage(){
     resultScreen.style.display = "block";
     quizScreen.style.display = "none";
 
-    var percentScore = Math.round(100 * (score  / questions.length));
+    percentScore = Math.round(100 * (score  / questions.length));
     scoreDiv.innerText = percentScore; 
 }
 
@@ -104,7 +106,15 @@ var player = [""];
         li.id = "user";
         var rank = player.length;
         li.className = "dropdown-item";
-        li.innerHTML = "(" + rank + ")  " +name + ": " ;
+        li.innerHTML = "(" + rank + ")  " + "Name: " + name + ": " + "score  "+ percentScore + "%" ;
         player.push(name);
         leaderList.append(li);
+    }
+
+    refreshBtn.addEventListener('click', refreshPage)
+    function refreshPage(){
+        startScreen.style.display = "block";
+        resultScreen.style.display = "none";
+        quizScreen.style.display = "none";
+        
     }

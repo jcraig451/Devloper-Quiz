@@ -55,6 +55,11 @@ body{
     color: white;
     font-size: 30px;   
 }
+#refreshbtn{
+    background-color:#001a00;
+    color: white;
+    font-size: 30px;   
+}
 #A, #B, #C, #D{
     border: 2px solid #99ff99;
     width: auto;
