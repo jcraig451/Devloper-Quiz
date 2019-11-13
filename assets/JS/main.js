@@ -16,7 +16,7 @@ var initialBtn = document.getElementById("intialbtn");
 var leaderBtn = document.getElementById("leaderbtn");
 var leaderList = document.getElementById("leaderboardList");
 var nameEl = document.getElementById("initials");
-var refreshBtn = document.getElementById("refreshBtn");
+var refreshBtn = document.getElementById("refreshbtn");
 
 // initializing variables for the start
 var lastQuestion = questions.length - 1;
@@ -37,30 +37,35 @@ function cycleQuestion(){
     choiceD.innerText = q.choiceD;
 }
 
-// start quiz function
+// start quiz function;
 startBtn.addEventListener('click', startQuiz)
 
 function startQuiz(){
     startScreen.style.display = "none";
+    runningQuestion = 0;
     cycleQuestion();   
     quizScreen.style.display = "block";
     gameTime();
     timeOFgame = setInterval(gameTime, 1000);
+    $(".answer-btn").removeAttr("disabled");
+    
 }
 
 // Set a quiz time counter
 
  function gameTime(){
      if(timeCount >= 0 ){
-        time.innerHTML = "Time Remaining: " +timeCount;
+        time.innerHTML = "Time Remaining: " + timeCount;
         timeCount--;
      }else{
          timeCount = 0;
          resultsPage();
+         clearInterval(timeOFgame);
      }
  }
 // Check for correct answer
  function checkAnswer(answer){
+     $(".answer-btn").prop("disabled", "disabled");
      //making correct answer prompts
      if( answer == questions[runningQuestion].correct){
          score++;
@@ -77,21 +82,20 @@ function startQuiz(){
         if(runningQuestion < lastQuestion){
             runningQuestion++;
             cycleQuestion();
+            $(".answer-btn").removeAttr("disabled");
             answerCheck.innerText = "";
+        }else{
+            (runningQuestion == lastQuestion)
+            answerCheck.innerText = "";
+            timeCount = 0;
+            resultsPage();
         }
-     }, 1000);
-     if(runningQuestion == lastQuestion){
-         timeCount = 0;
-         resultsPage();
-     }else{
-         cycleQuestion();
-     }
-    }
+     }, 1000)};
+     
 // function that prompts the results page after time runs out or all questions are answered
 function resultsPage(){
     resultScreen.style.display = "block";
     quizScreen.style.display = "none";
-
     percentScore = Math.round(100 * (score  / questions.length));
     scoreDiv.innerText = percentScore; 
 }
@@ -109,12 +113,15 @@ var player = [""];
         li.innerHTML = "(" + rank + ")  " + "Name: " + name + ": " + "score  "+ percentScore + "%" ;
         player.push(name);
         leaderList.append(li);
+// saving variables to local storage
+        localStorage.setItem(name , percentScore);
     }
-
+// refreshing to go back to start screen
     refreshBtn.addEventListener('click', refreshPage)
     function refreshPage(){
-        startScreen.style.display = "block";
+        timeCount = 75;
         resultScreen.style.display = "none";
         quizScreen.style.display = "none";
+        startScreen.style.display = "block";
         
     }
